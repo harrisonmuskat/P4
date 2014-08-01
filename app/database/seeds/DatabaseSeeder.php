@@ -53,8 +53,8 @@ class IngredientTableSeeder extends Seeder {
 	    fclose($ingredients_file);
 	}
 
-	DB::table('ingredients')->insert($ing_array);
-    /*$i = 0;
+	//DB::table('ingredients')->insert($ing_array);
+    $i = 0;
 
     while(array_key_exists($i, $ing_array))
     {
@@ -69,7 +69,9 @@ class IngredientTableSeeder extends Seeder {
     	$ingredient->srvSize2 = $ing_array[$i]['srvSize2'];
     	$ingredient->srvName2 = $ing_array[$i]['srvName2'];
     	$ingredient->save();
-    }*/
+
+    	$i++;
+    }
 
 	}
 
