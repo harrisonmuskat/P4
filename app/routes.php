@@ -11,23 +11,23 @@
 |
 */
 
-// This is the route for the landing page and for the guest landing page.
-Route::get('/', function()
-{
-	return "This is the home page.";
-});
+use Paste\Pre;
 
-// This route allows for user authentication, i.e. 'login'.
-Route::post('/', function()
-{
-	return "This is the log-in page.";
-});
+// This is the route for the landing page and for the guest landing page.
+Route::get('/', array(
+        'before' => 'guest',
+        function() {
+            return View::make('signup');
+        }
+    )
+);
 
 //This is the landing page for logged-in users.
-/*Route::get('/{username}', function($username)
+Route::get('/{username}', function($username)
 {
 	return "Landing page for {$username}.";
-});*/
+});
+
 
 //This is the pantry page for {$username}.
 Route::get('/{username}/pantry', function($username)
@@ -59,10 +59,44 @@ Route::get('/recipes', function()
 	return "This is the recipe search page.";
 });
 
+Route::get('/test/csv', function()
+{
+    ini_set('auto_detect_line_endings', true);
+
+    $ing_array = array();
+
+    $header = NULL;
+
+    if(($ingredients_file = fopen('data/ingredients.csv', 'r')) !== FALSE)
+    {
+        while(($row = fgetcsv($ingredients_file)) !== FALSE)
+        {
+            foreach($row as $field)
+            {
+                $field = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $field);
+            }
+
+            if($header)
+            {
+                $ing_array[] = array_combine($header, $row); 
+            }
+            else
+            {
+                $header = $row;
+            }
+        }
+
+        fclose($ingredients_file);
+    }
+
+    print_r($ing_array);
+
+
+
+});
+
 //Database test
-
-use Paste\Pre;
-
+/*
 Route::get('mysql-test', function() {
 
     # Use the DB component to select all the databases
@@ -72,5 +106,6 @@ Route::get('mysql-test', function() {
     return Pre::render($results);
 
 });
+*/
 
 
