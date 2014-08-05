@@ -12,52 +12,44 @@
 */
 
 use Paste\Pre;
-
+/*
+-----------------------
+Viewable pages
+-----------------------
+*/
 // This is the route for the landing page and for the guest landing page.
-Route::get('/', array(
-        'before' => 'guest',
-        function() {
-            return View::make('signup');
-        }
-    )
-);
+Route::get('/', 'PantryController@index');
 
-//This is the landing page for logged-in users.
-Route::get('/{username}', function($username)
-{
-	return "Landing page for {$username}.";
-});
-
-
-//This is the pantry page for {$username}.
-Route::get('/{username}/pantry', function($username)
-{
-	return "This is the {$username}s pantry.";
-});
+//This is the recipe page for users.
+Route::get('/recipes', 'RecipeController@recipeSearch');
 
 //This is how a user adds items to his/her pantry.
-Route::post('/{username}/pantry', function($username)
-{
-	return "This is where {$username} adds items to the pantry.";
-});
-
-//This is the recipe page for {$username}.
-Route::get('/{username}/recipes', function($username)
-{
-	return "This is the {$username}s recipe database.";
-});
+Route::get('/additem', 'PantryController@addItem');
 
 //This is how a user adds a recipe to the database.
-Route::post('/{username}/recipes', function($username)
-{
-	return "This is where {$username} adds recipes to the database.";
-});
+Route::get('/addrecipe', 'RecipeController@addRecipe');
 
-//This is the recipe search page.
-Route::get('/recipes', function()
-{
-	return "This is the recipe search page.";
-});
+//This is the page for deleting pantry items
+Route::get('/deleteitem', 'PantryController@deleteItem');
+
+//This is the page for deleting recipes
+Route::get('/deleteRecipe', 'RecipeController@deleteRecipe');
+
+/*
+-----------------------
+Handle Submissions
+-----------------------
+*/
+Route::post('/additem', 'PantryController@handleAddItem');
+Route::post('/addrecipe', 'RecipeController@handleAddRecipe');
+Route::post('/deleteitem', 'PantryController@handleDeleteItem');
+Route::post('/deleterecipe', 'RecipeController@handleDeleteRecipe');
+
+/*
+-----------------------
+Seeding the database
+-----------------------
+*/
 
 Route::get('/test/csv', function()
 {
