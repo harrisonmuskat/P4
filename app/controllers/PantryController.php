@@ -9,7 +9,11 @@ class PantryController extends BaseController
 		//If a user is logged in, show his/her pantry
 
 		//For all others, show listing of possible pantry items and recipes
-		return View::make('index');
+		$ingredientList = Ingredient::all();
+
+		$ingredientList = $ingredientList->random(5);
+
+		return View::make('index', compact('ingredientList'));
 	}
 
 	public function addItem()

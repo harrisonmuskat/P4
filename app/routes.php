@@ -47,10 +47,10 @@ Route::post('/deleterecipe', 'RecipeController@handleDeleteRecipe');
 
 /*
 -----------------------
-Seeding the database
+Test route for database seed to ensure proper headers
 -----------------------
 */
-
+/*
 Route::get('/test/csv', function()
 {
     ini_set('auto_detect_line_endings', true);
@@ -86,6 +86,8 @@ Route::get('/test/csv', function()
 
 
 });
+*/
+
 
 //Database test
 /*
