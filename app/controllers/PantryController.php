@@ -37,7 +37,7 @@ class PantryController extends BaseController
 		$user->email = Input::get('email');
 		$user->save();
 
-		return Response::make('Welcome to MyPantry,'.Input::get('username'));
+		return View::make('index');
 	}
 
 	public function searchItem()
@@ -60,43 +60,6 @@ class PantryController extends BaseController
 
 	public function handleAddItem()
 	{
-
-		$item = Input::get('item');
-		$item = '\''.$item.'\'';
-
-		return Ingredient::where('name', 'LIKE', 'PIE')->get();
-		/*$pantryDB = new mysqli('localhost', 'root', 'root', 'pantry');
-
-		if (mysqli_connect_errno()) 
-		{
-    		printf("Connect failed: %s\n", mysqli_connect_error());
-    		exit();
-		}
-
-		else {
-			$query = "SELECT * FROM ingredients";
-			$query .= "WHERE MATCH (name)";
-			$query .= "AGAINST (\'".$item."\' WITH QUERY EXPANSION)";
-
-			if($pantryDB->multi_query($query))
-			{
-				do 
-				{
-					if($result = $pantryDB->store_result())
-					{
-						while ($row = $result->fetch_row())
-						{
-							printf($row[0]);
-						}
-						$result->free();
-					}
-				}
-				while($pantryDB->next_result());
-			}
-			
-		}
-
-		$pantryDB->close();*/
 		
 	}
 

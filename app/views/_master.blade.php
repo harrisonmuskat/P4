@@ -13,9 +13,9 @@
 			<div class = "navbar-header">
 				<a href="{{ action('PantryController@index') }}" class = "navbar-brand">MyPantry</a>
 				<a href="{{ action('PantryController@createUser') }}" class = "btn btn-primary navbar-btn"> Register </a>
-				<a href="{{ action('PantryController@addItem') }}" class = "btn btn-primary navbar-btn"> Add Pantry Item </a>
-				<a href="{{ action('RecipeController@recipeSearch') }}" class = "btn btn-primary navbar-btn"> Find Recipes </a>
-				<a href="{{ action('RecipeController@addRecipe') }}" class = "btn btn-primary navbar-btn"> Your recipes </a>
+				<a href="{{ action('PantryController@addItem') }}" class = "btn btn-default navbar-btn"> Find a Pantry Item </a>
+				<a href="{{ action('RecipeController@recipeSearch') }}" class = "btn btn-default navbar-btn"> Find Recipes </a>
+				<a href="{{ action('RecipeController@addRecipe') }}" class = "btn btn-default navbar-btn"> Your Recipes </a>
 			</div>
 		</nav>
 		@yield('content')

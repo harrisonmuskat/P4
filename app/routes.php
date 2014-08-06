@@ -45,6 +45,7 @@ Route::get('/deleteRecipe', 'RecipeController@deleteRecipe');
 Handle Submissions
 -----------------------
 */
+Route::post('/', 'PantryController@handleAddItem');
 Route::post('/newuser', 'PantryController@handleCreateUser');
 Route::post('/searchitem', 'PantryController@handleSearchItem');
 Route::post('/additem', 'PantryController@handleAddItem');
