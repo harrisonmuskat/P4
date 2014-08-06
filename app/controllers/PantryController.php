@@ -16,9 +16,38 @@ class PantryController extends BaseController
 		return View::make('index', compact('ingredientList'));
 	}
 
+	public function createUser()
+	{
+		//Show the form to create a user
+		return View::make('createUser');
+	}
+
+	public function handleCreateUser()
+	{
+		$user = new User;
+		$user->username = Input::get('username');
+		$user->password = Hash::make(Input::get('password'));
+		$user->email = Input::get('email');
+		$user->save();
+
+		return Response::make('Welcome to MyPantry,'.Input::get('username'));
+	}
+
+	public function searchItem()
+	{
+		//Show the form to search for a pantry item
+		return View::make('searchItem');
+	}
+
+	public function handleSearchItem()
+	{
+		//Process the item search
+	}
+
 	public function addItem()
 	{
 		//Show the form to add an item (or items) to the pantry
+
 		return View::make('addItem');
 	}
 

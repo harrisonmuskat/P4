@@ -20,8 +20,13 @@ Viewable pages
 // This is the route for the landing page and for the guest landing page.
 Route::get('/', 'PantryController@index');
 
+//This is the route for the user creation page
+Route::get('/newuser', 'PantryController@createUser');
+
 //This is the recipe page for users.
 Route::get('/recipes', 'RecipeController@recipeSearch');
+
+Route::get('/searchitem', 'PantryController@searchItem');
 
 //This is how a user adds items to his/her pantry.
 Route::get('/additem', 'PantryController@addItem');
@@ -40,6 +45,8 @@ Route::get('/deleteRecipe', 'RecipeController@deleteRecipe');
 Handle Submissions
 -----------------------
 */
+Route::post('/newuser', 'PantryController@handleCreateUser');
+Route::post('/searchitem', 'PantryController@handleSearchItem');
 Route::post('/additem', 'PantryController@handleAddItem');
 Route::post('/addrecipe', 'RecipeController@handleAddRecipe');
 Route::post('/deleteitem', 'PantryController@handleDeleteItem');
