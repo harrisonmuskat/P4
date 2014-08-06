@@ -6,14 +6,21 @@ class PantryController extends BaseController
 {
 	public function index()
 	{
-		//If a user is logged in, show his/her pantry
+		//If no user
+		if(Auth::guest())
+		{
+			//Display sample pantry
+			$ingredientList = Ingredient::all();
 
-		//For all others, show listing of possible pantry items and recipes
-		$ingredientList = Ingredient::all();
+			$ingredientList = $ingredientList->random(5);
 
-		$ingredientList = $ingredientList->random(5);
+			return View::make('index', compact('ingredientList'));
+		}
+		else
+		{
 
-		return View::make('index', compact('ingredientList'));
+		}
+		
 	}
 
 	public function createUser()
@@ -53,7 +60,44 @@ class PantryController extends BaseController
 
 	public function handleAddItem()
 	{
-		//Process the add form submission
+
+		$item = Input::get('item');
+		$item = '\''.$item.'\'';
+
+		return Ingredient::where('name', 'LIKE', 'PIE')->get();
+		/*$pantryDB = new mysqli('localhost', 'root', 'root', 'pantry');
+
+		if (mysqli_connect_errno()) 
+		{
+    		printf("Connect failed: %s\n", mysqli_connect_error());
+    		exit();
+		}
+
+		else {
+			$query = "SELECT * FROM ingredients";
+			$query .= "WHERE MATCH (name)";
+			$query .= "AGAINST (\'".$item."\' WITH QUERY EXPANSION)";
+
+			if($pantryDB->multi_query($query))
+			{
+				do 
+				{
+					if($result = $pantryDB->store_result())
+					{
+						while ($row = $result->fetch_row())
+						{
+							printf($row[0]);
+						}
+						$result->free();
+					}
+				}
+				while($pantryDB->next_result());
+			}
+			
+		}
+
+		$pantryDB->close();*/
+		
 	}
 
 	public function deleteItem()
