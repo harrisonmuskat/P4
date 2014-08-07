@@ -6,24 +6,17 @@ class PantryController extends BaseController
 {
 	public function index()
 	{
+		//Display sample pantry
+		$ingredientList = Ingredient::all();
+
 		//If no user
-		/*
 		if(Auth::guest())
 		{
-			//Display sample pantry
-			$ingredientList = Ingredient::all();
+			$ingredientList = $ingredientList->random(5);
 
-			if(!$ingredientList->isEmpty())
-			{
-				$ingredientList = $ingredientList->random(5);
-
-				return View::make('guestindex', compact('ingredientList'));
-			}
-			else
-			{
-				return View::make('index');
-			}
-		*/
+			return View::make('index', compact('ingredientList'));
+		}
+		
 		return View::make('index');
 		
 	}
