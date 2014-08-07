@@ -12,9 +12,17 @@ class PantryController extends BaseController
 			//Display sample pantry
 			$ingredientList = Ingredient::all();
 
-			$ingredientList = $ingredientList->random(5);
+			if(!$ingredientList->isEmpty())
+			{
+				$ingredientList = $ingredientList->random(5);
 
-			return View::make('index', compact('ingredientList'));
+				return View::make('index', compact('ingredientList'));
+			}
+			else
+			{
+				return View::make('index');
+			}
+			
 		}
 		else
 		{
