@@ -6,7 +6,7 @@ return array(
 
         'mysql' => array(
             'driver'    => 'mysql',
-            'host'      => 'tunnel.pagodabox.com:3306',
+            'host'      => 'localhost',
             'database'  => 'pantry',
             'username'  => 'jessia',
             'password'  => 'PfE1ZoaS',
