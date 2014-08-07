@@ -6,7 +6,7 @@
 				<button type="button" class="close" data-dismiss="alert">
 					<span aria-hidden="true">&times;</span>
 					<span class="sr-only">Close</span>
-				</button>{{ Session::get('register') }}
+				</button>{{ Session::get('message') }}
 			</div>
 	@endif
 	<div>
@@ -14,7 +14,7 @@
 	</div>
 
 	@if(Auth::guest())
-		<p> Here is a sample pantry: <p>
+		<p> Here is a sample pantry: </p>
 		<table class = "table table-striped">
 				<thead>
 					<tr>
@@ -31,14 +31,14 @@
 				<tbody>
 					@foreach($ingredientList as $ingredient)
 						<tr>
-							<td> {{ $ingredient->name }} </td>
+							<td class = "text-primary"> {{ $ingredient->name }} </td>
 							<td> {{ $ingredient->srvName1 }} </td>
 							<td> {{ $ingredient->srvSize1 }} </td>
 							<td> {{ $ingredient->calories }} </td>
 							<td> {{ $ingredient->carbohydrates }} </td>
 							<td> {{ $ingredient->fats }} </td>
 							<td> {{ $ingredient->proteins }} </td>
-							<td> <button type="submit" class="btn btn-default"> Add!</button></td>
+							<td> <button type="submit" class="btn btn-primary btn-sm"> Add!</button></td>
 						</tr>
 					@endforeach
 				</tbody>

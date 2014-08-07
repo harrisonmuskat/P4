@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>MyPantry</title>
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
 </head>
 
 <body>
@@ -28,6 +28,9 @@
 					</ul>	
 				</div>
 			</div>
+		</div>
+		<div class = "jumbotron">
+			<h1>MyPantry<h1>
 		</div>
 		@yield('content')
 	</div>

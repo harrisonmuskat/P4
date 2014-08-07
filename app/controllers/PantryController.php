@@ -46,7 +46,7 @@ class PantryController extends BaseController
 			$user->email = $userData['email'];
 			$user->save();
 
-			return Redirect::to('/')->with('register', 'Thank you for registering!');
+			return Redirect::to('/')->with('message', 'Thank you for registering!');
 		}
 
 		return Redirect::to('createUser')->withErrors($validator);
@@ -72,7 +72,7 @@ class PantryController extends BaseController
 	public function logoutUser()
 	{
 		Auth::logout();
-		return Response::make('You are logged out.');
+		return Redirect::to('/')->with('message', 'You have logged out.');
 	}
 
 	public function searchItem()
@@ -94,11 +94,11 @@ class PantryController extends BaseController
 
 	public function handleAddItem()
 	{
-		$ingredient = new Ingredient();
-		$ingredient->name = Input::get('item');
-		$ingredient->srvName1 = Input::get('servings');
-		$ingredient->save();
-		return View::make('index');
+		$item = '%'.strtoupper(Input::get('item')).'%';
+
+		$results = DB::table('ingredients')->where('name', 'LIKE', $item)->get();
+
+		return View::make('addItem', compact('results'));
 	}
 
 	public function deleteItem()
