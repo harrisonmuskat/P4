@@ -18,9 +18,11 @@ web1:
     - pdo_mysql
     - mcrypt
     - memcached
+  before_deploy:
+    - "php artisan migrate"
+    - "php artisan db:seed"
   after_deploy:
     - "rm -f app/storage/cache/*"
     - "rm -f app/storage/views/*"
-    - "php artisan migrate"
-    - "php artisan db:seed"
+    
 
