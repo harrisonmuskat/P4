@@ -34,7 +34,6 @@
 							<th>Carbs (g)</th>
 							<th>Fats (g)</th>
 							<th>Proteins (g)</th>
-							<th>Add to Pantry<th>
 						</tr>
 					<thead>
 					<tbody>
@@ -47,7 +46,6 @@
 								<td> {{ $ingredient->carbohydrates }} </td>
 								<td> {{ $ingredient->fats }} </td>
 								<td> {{ $ingredient->proteins }} </td>
-								<td> <button type="submit" class="btn btn-primary btn-sm"> Add!</button></td>
 							</tr>
 						@endforeach
 					</tbody>

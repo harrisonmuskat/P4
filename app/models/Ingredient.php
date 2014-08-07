@@ -8,6 +8,6 @@ class Ingredient extends Eloquent
 
 	public function users()
 	{
-		return $this->belongsToMany('User', 'ingredient_user');
+		return $this->belongsToMany('User', 'ingredient_user', 'ingredient_id', 'user_id');
 	}
 }

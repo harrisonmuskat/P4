@@ -84,6 +84,8 @@ class PantryController extends BaseController
 	public function handleSearchItem()
 	{
 		//Process the item search
+		$user = Auth::user()->id;
+		$user->ingredient()->attach(Input::get('id'));
 	}
 
 	public function addItem()
@@ -94,11 +96,21 @@ class PantryController extends BaseController
 
 	public function handleAddItem()
 	{
-		$item = '%'.strtoupper(Input::get('item')).'%';
+		if(Input::get('search'))
+		{
+			$item = '%'.strtoupper(Input::get('item')).'%';
 
-		$results = DB::table('ingredients')->where('name', 'LIKE', $item)->get();
+			$results = DB::table('ingredients')->where('name', 'LIKE', $item)->get();
 
-		return View::make('addItem', compact('results'));
+			return View::make('addItem', compact('results'));
+		}
+		elseif(Input::get('add'))
+		{
+			$user = User::find(Auth::user()->id);
+			$user->ingredients()->attach(Input::get('id'));
+			return View::make('addItem')->with('message', 'Item added!');
+		}
+		
 	}
 
 	public function deleteItem()

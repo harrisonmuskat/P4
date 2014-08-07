@@ -1,8 +1,17 @@
 @extends('_master')
 
 @section('content')
+@if(Session::has('message'))
+	<div class="alert alert-success alert-dismissable" role="alert">
+		<button type="button" class="close" data-dismiss="alert">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+		{{ Session::get('message') }}
+	</div>
+@endif
 <div class = "row">
-	<div class = "col-md-4 col-md-offset-4">
+	<div class = "col-md-4">
 		<form class = "form-horizontal" role = "form" action = "{{ url('additem') }}" method = "post">
 			<legend> Search and Add Items to Pantry: </legend>
 			<div class = "form-group">
@@ -12,8 +21,8 @@
 				</div>
 			</div>
 			<div class = "form-group">
-				<div class = "col-md-3">
-					<button type="submit" class="btn btn-primary"> Submit </button>
+				<div class = "col-md-2">
+					<input type="submit" id = "search" name = "search" class="btn btn-primary" value = "Search"> </input>
 				</div>
 			</div>
 		</form>
@@ -43,7 +52,9 @@
 					<td> {{ $ingredient->carbohydrates }} </td>
 					<td> {{ $ingredient->fats }} </td>
 					<td> {{ $ingredient->proteins }} </td>
-					<td> <button type="submit" class="btn btn-primary btn-sm"> Add!</button></td>
+					<td> <form method = "post" action = "{{ url('additem') }}"> 
+							<input type = "hidden" id = "id" name = "id" value = "{{ $ingredient->id }}">
+							<input type="submit" id = "add" name = "add" class="btn btn-primary btn-sm" value = "Add!"> </td>
 				</tr>
 			@endforeach
 		</tbody>

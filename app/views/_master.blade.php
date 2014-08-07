@@ -18,13 +18,18 @@
 				</button>
 				<div class = "collapse navbar-collapse navheaderCollapse">
 					<ul class = "nav navbar-nav navbar-left">
+						@if(Auth::guest())
 						<li><a href="{{ action('PantryController@createUser') }}">Register</a></li>
-						<li><a href="{{ action('PantryController@loginUser') }}">Log In</a></li>
+						@endif
 					</ul>
 					<ul class = "nav navbar-nav navbar-right">
 						<li><a href="{{ action('PantryController@addItem') }}">Add an Item to Your Pantry</a></li>
 						<li><a href="{{ action('RecipeController@yourRecipe') }}">Your Recipes</a></li>
+						@if(Auth::guest())
+						<li><a href="{{ action('PantryController@loginUser') }}">Log In</a></li>
+						@else
 						<li><a href="{{ action('PantryController@logoutUser') }}">Log Out</a></li>
+						@endif
 					</ul>	
 				</div>
 			</div>
