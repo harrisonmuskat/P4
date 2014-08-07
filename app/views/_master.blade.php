@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<div class = "container">
+	<div class = "container-fluid">
 		<div class = "navbar navbar-default navbar-static-top head-border" role = "navigation">
 			<div class = "container">
 				<a href="{{ action('PantryController@index') }}" class = "navbar-brand" id="brand">MyPantry</a>
@@ -30,7 +30,8 @@
 			</div>
 		</div>
 		<div class = "jumbotron">
-			<h1>MyPantry<h1>
+			<h1> MyPantry </h1>
+			@yield('jumbo')
 		</div>
 		@yield('content')
 	</div>
