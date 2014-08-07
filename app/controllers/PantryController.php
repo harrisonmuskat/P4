@@ -7,6 +7,7 @@ class PantryController extends BaseController
 	public function index()
 	{
 		//If no user
+		/*
 		if(Auth::guest())
 		{
 			//Display sample pantry
@@ -22,12 +23,8 @@ class PantryController extends BaseController
 			{
 				return View::make('index');
 			}
-			
-		}
-		else
-		{
-
-		}
+		*/
+		return View::make('index');
 		
 	}
 
@@ -84,13 +81,16 @@ class PantryController extends BaseController
 	public function addItem()
 	{
 		//Show the form to add an item (or items) to the pantry
-
 		return View::make('addItem');
 	}
 
 	public function handleAddItem()
 	{
-		
+		$ingredient = new Ingredient();
+		$ingredient->name = Input::get('item');
+		$ingredient->srvName1 = Input::get('servings');
+		$ingredient->save();
+		return View::make('index');
 	}
 
 	public function deleteItem()

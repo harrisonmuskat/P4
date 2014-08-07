@@ -35,7 +35,7 @@ Route::get('/recipes', array('before' => 'auth', 'uses' => 'RecipeController@you
 Route::get('/searchitem', 'PantryController@searchItem');
 
 //This is how a user adds items to his/her pantry.
-Route::get('/additem', 'PantryController@addItem');
+Route::get('/additem', array('before' => 'auth', 'uses' => 'PantryController@addItem'));
 
 //This is how a user adds a recipe to the database.
 Route::get('/addrecipe', 'RecipeController@addRecipe');
