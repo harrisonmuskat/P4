@@ -19,22 +19,18 @@
 			<tr>
 		<thead>
 		<tbody>
-			<?php if(Auth::guest()) ?>
-				@foreach($ingredientList as $ingredient)
-				<tr>
-					<td> {{ $ingredient->name }} </td>
-					<td> {{ $ingredient->srvName1 }} </td>
-					<td> {{ $ingredient->srvSize1 }} </td>
-					<td> {{ $ingredient->calories }} </td>
-					<td> {{ $ingredient->carbohydrates }} </td>
-					<td> {{ $ingredient->fats }} </td>
-					<td> {{ $ingredient->proteins }} </td>
-					<td> <button type="submit" class="btn btn-default"> Add!</button></td>
-				</tr>
-				@endforeach
-			<?php else ?>
-				<tr>
-					<td> Sample Name <td>
+			@foreach($ingredientList as $ingredient)
+			<tr>
+				<td> {{ $ingredient->name }} </td>
+				<td> {{ $ingredient->srvName1 }} </td>
+				<td> {{ $ingredient->srvSize1 }} </td>
+				<td> {{ $ingredient->calories }} </td>
+				<td> {{ $ingredient->carbohydrates }} </td>
+				<td> {{ $ingredient->fats }} </td>
+				<td> {{ $ingredient->proteins }} </td>
+				<td> <button type="submit" class="btn btn-default"> Add!</button></td>
+			</tr>
+			@endforeach
 		</tbody>
 	</table>
 @stop

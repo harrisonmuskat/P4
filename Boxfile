@@ -16,7 +16,7 @@ web1:
   php_extensions:
     - zip
     - pdo_mysql
-    - [mcrypt, mysqli, mysql, mbstring]
+    - mcrypt
     - memcached
   after_deploy:
     - "rm -f app/storage/cache/*"
