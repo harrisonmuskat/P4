@@ -46,6 +46,9 @@ Route::get('/deleteitem', 'PantryController@deleteItem');
 //This is the page for deleting recipes
 Route::get('/deleteRecipe', 'RecipeController@deleteRecipe');
 
+//This is the route to seed the production database (admin protected)
+Route::get('/seed', array('before' => array('auth'|'admin'), 'uses' => 'AdminController@loadDatabase'));
+
 /*
 -----------------------
 Handle Submissions

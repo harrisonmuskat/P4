@@ -28,3 +28,5 @@ Password: 12345
 
 [Database of ingredients pulled from USDA](http://ndb.nal.usda.gov/ndb/search/list). I downloaded the file in Excel format and converted it to a CSV file so I could set the headers to match my database. I then referenced [Laravel Snippets](http://laravelsnippets.com/snippets/seeding-database-with-csv-files-cleanly) in order to write the code to seed the database with the data. I then ran the php artisan:seed db command and after a few hangups, got it working.
 
+Twitter Bootstrap [Bootswatch: Superhero](http://bootswatch.com/superhero/)
+

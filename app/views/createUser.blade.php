@@ -2,6 +2,13 @@
 
 @section('content')
 	<div class = "row">
+		<ul class = "errors">
+			@foreach($errors->all() as $message)
+				<li><div class="alert alert-danger" role="alert">{{ $message }}</div></li>
+			@endforeach
+		</ul>
+	</div>
+	<div class = "row">
 		<div class = "col-md-4 col-md-offset-4">
 			<form role = "form" action= "{{ url('newuser') }}" method="post">
 				<div class = "form-group">

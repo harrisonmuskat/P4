@@ -36,13 +36,28 @@ class PantryController extends BaseController
 
 	public function handleCreateUser()
 	{
-		$user = new User;
-		$user->username = Input::get('username');
-		$user->password = Hash::make(Input::get('password'));
-		$user->email = Input::get('email');
-		$user->save();
+		$userData = Input::all();
 
-		return View::make('index');
+		$rules = array(
+			'username' => 'alpha_num|min:3',
+			'email' => 'email|unique:users,email'
+		);
+
+		$validator = Validator::make($userData, $rules);
+
+		if($validator->passes())
+		{
+			$user = new User;
+			$user->username = $userData['username'];
+			$user->password = Hash::make($userData['password']);
+			$user->email = $userData['email'];
+			$user->save();
+
+			return Redirect::to('/')->with('register', 'Thank you for registering!');
+		}
+
+		return Redirect::to('createUser')->withErrors($validator);
+		
 	}
 
 	public function loginUser()

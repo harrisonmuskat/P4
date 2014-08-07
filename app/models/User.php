@@ -38,6 +38,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function getAuthUsername()
+	{
+		return $this->username;
+	}
+
 	public function ingredients()
 	{
 		return $this->belongsToMany('Ingredient', 'ingredient_user');
@@ -46,6 +51,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function recipes()
 	{
 		return $this->belongsToMany('Recipe', 'recipe_user');
+	}
+
+	public function isAdmin()
+	{
+		return $this->username->name === 'admin';
 	}
 
 }
