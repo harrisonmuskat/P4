@@ -20,7 +20,7 @@ class PantryController extends BaseController
 			}
 			else
 			{
-				return View::make('index');
+				return View::make('guestindex');
 			}
 			
 		}
