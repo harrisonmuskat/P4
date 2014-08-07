@@ -16,11 +16,11 @@ class PantryController extends BaseController
 			{
 				$ingredientList = $ingredientList->random(5);
 
-				return View::make('index', compact('ingredientList'));
+				return View::make('guestindex', compact('ingredientList'));
 			}
 			else
 			{
-				return View::make('guestindex');
+				return View::make('index');
 			}
 			
 		}
@@ -46,6 +46,28 @@ class PantryController extends BaseController
 		$user->save();
 
 		return View::make('index');
+	}
+
+	public function loginUser()
+	{
+		//Show the form to login a user
+		return View::make('login');
+	}
+
+	public function handleLoginUser()
+	{
+		$credentials = Input::only('username', 'password');
+		if(Auth::attempt($credentials))
+		{
+			return Redirect::intended('/');
+		}
+		return Redirect::to('login');
+	}
+
+	public function logoutUser()
+	{
+		Auth::logout();
+		return Response::make('You are logged out.');
 	}
 
 	public function searchItem()

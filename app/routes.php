@@ -23,8 +23,14 @@ Route::get('/', 'PantryController@index');
 //This is the route for the user creation page
 Route::get('/newuser', 'PantryController@createUser');
 
+//This is the route for the login page
+Route::get('/login', 'PantryController@loginUser');
+
+//This is the route to logout
+Route::get('/logout', 'PantryController@logoutUser');
+
 //This is the recipe page for users.
-Route::get('/recipes', 'RecipeController@recipeSearch');
+Route::get('/recipes', array('before' => 'auth', 'uses' => 'RecipeController@yourRecipe'));
 
 Route::get('/searchitem', 'PantryController@searchItem');
 
@@ -47,6 +53,7 @@ Handle Submissions
 */
 Route::post('/', 'PantryController@handleAddItem');
 Route::post('/newuser', 'PantryController@handleCreateUser');
+Route::post('/login', 'PantryController@handleLoginUser');
 Route::post('/searchitem', 'PantryController@handleSearchItem');
 Route::post('/additem', 'PantryController@handleAddItem');
 Route::post('/addrecipe', 'RecipeController@handleAddRecipe');

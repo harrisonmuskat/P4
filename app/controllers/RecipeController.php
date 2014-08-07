@@ -4,10 +4,11 @@
 
 class RecipeController extends BaseController
 {
-	public function recipeSearch(array $pantry)
+	public function yourRecipe()
 	{
 		//Returns a list of recipes based on user's pantry items
-		return View::make('recipeSearch');
+		
+		return View::make('yourRecipe');
 	}
 
 	public function addRecipe($recipe)

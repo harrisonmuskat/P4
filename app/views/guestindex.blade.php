@@ -19,7 +19,18 @@
 			<tr>
 		<thead>
 		<tbody>
-			
+			@foreach($ingredientList as $ingredient)
+			<tr>
+				<td> {{ $ingredient->name }} </td>
+				<td> {{ $ingredient->srvName1 }} </td>
+				<td> {{ $ingredient->srvSize1 }} </td>
+				<td> {{ $ingredient->calories }} </td>
+				<td> {{ $ingredient->carbohydrates }} </td>
+				<td> {{ $ingredient->fats }} </td>
+				<td> {{ $ingredient->proteins }} </td>
+				<td> <button type="submit" class="btn btn-default"> Add!</button></td>
+			</tr>
+			@endforeach
 		</tbody>
 	</table>
 @stop
