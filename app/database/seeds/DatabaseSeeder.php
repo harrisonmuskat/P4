@@ -11,7 +11,14 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('IngredientTableSeeder');
+		if (App:environment() === 'production')
+		{
+			$this->call('IngredientTableSeeder');
+		}
+		else
+		{
+			$this->call('IngredientTableSeeder');
+		}
 
         $this->command->info('Ingredient table seeded!');
 	}

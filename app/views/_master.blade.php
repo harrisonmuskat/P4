@@ -9,16 +9,26 @@
 
 <body>
 	<div class = "container">
-		<nav class = "navbar navbar-default" role = "navigation">
-			<div class = "navbar-header">
-				<a href="{{ action('PantryController@index') }}" class = "navbar-brand">MyPantry</a>
-				<a href="{{ action('PantryController@createUser') }}" class = "btn btn-primary navbar-btn"> Register </a>
-				<a href="{{ action('PantryController@loginUser') }}" class = "btn btn-primary navbar-btn"> Log In </a>
-				<a href="{{ action('PantryController@logoutUser') }}" class = "btn btn-primary navbar-btn"> Log Out </a>
-				<a href="{{ action('PantryController@addItem') }}" class = "btn btn-default navbar-btn"> Add an Item to Your Pantry </a>
-				<a href="{{ action('RecipeController@yourRecipe') }}" class = "btn btn-default navbar-btn"> Your Recipes </a>
+		<div class = "navbar navbar-default navbar-static-top head-border" role = "navigation">
+			<div class = "container">
+				<a href="{{ action('PantryController@index') }}" class = "navbar-brand" id="brand">MyPantry</a>
+				<button class = "navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class = "icon-bar"></span>
+					<span class = "icon-bar"></span>
+				</button>
+				<div class = "collapse navbar-collapse navheaderCollapse">
+					<ul class = "nav navbar-nav navbar-left">
+						<li><a href="{{ action('PantryController@createUser') }}">Register</a></li>
+						<li><a href="{{ action('PantryController@loginUser') }}">Log In</a></li>
+					</ul>
+					<ul class = "nav navbar-nav navbar-right">
+						<li><a href="{{ action('PantryController@addItem') }}">Add an Item to Your Pantry</a></li>
+						<li><a href="{{ action('RecipeController@yourRecipe') }}">Your Recipes</a></li>
+						<li><a href="{{ action('PantryController@logoutUser') }}">Log Out</a></li>
+					</ul>	
+				</div>
 			</div>
-		</nav>
+		</div>
 		@yield('content')
 	</div>
 
